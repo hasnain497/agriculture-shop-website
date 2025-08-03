@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Farhan Zrai Service - Crop Protection Experts</title>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome for icons -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+  <style>
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 100%;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background-color: #f9fafb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+    button {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* Utility classes */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    /* ============================
+       Header + Navigation Styles
+       ============================ */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #2f855a; /* green */
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #e6fffa;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #e6fffa;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: #c6f6d5;
+    }
+    /* Underline effect on focus and hover */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #c6f6d5;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      width: 100%;
+    }
+
+    /* Hamburger menu button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #e6fffa;
+      font-size: 1.5rem;
+    }
+
+    /* Mobile nav menu */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: #276749; /* darker green */
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 1rem 0;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+    }
+    .mobile-nav a {
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      color: #e6fffa;
+      border-top: 1px solid #38a169;
+      transition: background-color 0.3s ease;
+    }
+    .mobile-nav a:first-child {
+      border-top: none;
+    }
+    .mobile-nav a:hover,
+    .mobile-nav a:focus {
+      background-color: #38a169;
+      outline: none;
+    }
+
+    /* ============================
+       Hero Section Styles
+       ============================ */
+    #home {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #e6fffa;
+    }
+    #home img.bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5) saturate(1.2);
+      user-select: none;
+      pointer-events: none;
+    }
+    #home .hero-content {
+      max-width: 90vw;
+      width: 600px;
+      padding: 0 1rem;
+    }
+    #home h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+    #home p.subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    #home .cta-button {
+      background: linear-gradient(90deg, #38a169, #68d391);
+      border: none;
+      padding: 0.75rem 2.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f0fff4;
+      border-radius: 9999px;
+      box-shadow: 0 6px 12px rgb(56 161 105 / 0.5);
+      transition: background-position 0.5s ease, box-shadow 0.3s ease;
+      background-size: 200% 100%;
+      background-position: 0% 0%;
+      user-select: none;
+    }
+    #home .cta-button:hover,
+    #home .cta-button:focus {
+      background-position: 100% 0%;
+      box-shadow: 0 8px 20px rgb(104 211 145 / 0.7);
+      outline: none;
+    }
+    #home .cta-button:focus-visible {
+      outline: 3px solid #9ae6b4;
+      outline-offset: 3px;
+    }
+
+    /* ============================
+       About Section Styles
+       ============================ */
+    #about {
+      padding: 4rem 1rem 6rem;
+      background-color: #f0fff4;
+      text-align: center;
+    }
+    #about h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #276749;
+    }
+    .founders {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .founder-card {
+      background-color: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      flex: 1 1 300px;
+      max-width: 350px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .founder-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .founder-card img {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
+      user-select: none;
+    }
+    .founder-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #2f855a;
+    }
+    .founder-card p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4a5568;
+      line-height: 1.4;
+    }
+
+    /* ============================
+       Products Section Styles
+       ============================ */
+    #products {
+      padding: 4rem 1rem 6rem;
+      background-color: #ffffff;
+      text-align: center;
+    }
+    #products h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #276749;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .product-card {
+      background-color: #f0fff4;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.2);
+      outline: none;
+    }
+    .product-image-wrapper {
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      user-select: none;
+    }
+    .product-card:hover .product-image-wrapper img,
+    .product-card:focus-within .product-image-wrapper img {
+      transform: scale(1.1);
+    }
+    .product-content {
+      padding: 1.25rem 1.5rem 2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #276749;
+    }
+    .product-content p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    .buy-button {
+      background-color: #38a169;
+      border: none;
+      color: #f0fff4;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 10px rgb(56 161 105 / 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      align-self: flex-start;
+      user-select: none;
+    }
+    .buy-button:hover,
+    .buy-button:focus {
+      background-color: #2f855a;
+      box-shadow: 0 6px 14px rgb(47 133 90 / 0.7);
+      outline: none;
+    }
+    .buy-button:focus-visible {
+      outline: 3px solid #9ae6b4;
+      outline-offset: 3px;
+    }
+
+    /* ============================
+       Contact Section Styles
+       ============================ */
+    #contact {
+      padding: 4rem 1rem 6rem;
+      background-color: #f0fff4;
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #276749;
+    }
+    .contact-container {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      justify-content: center;
+    }
+    form.contact-form {
+      flex: 1 1 350px;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    form.contact-form label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #276749;
+      text-align: left;
+    }
+    form.contact-form input,
+    form.contact-form textarea {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      border: 2px solid #c6f6d5;
+      border-radius: 0.5rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    form.contact-form input:focus,
+    form.contact-form textarea:focus {
+      border-color: #38a169;
+      outline: none;
+      box-shadow: 0 0 6px #68d391aa;
+    }
+    form.contact-form textarea {
+      min-height: 120px;
+    }
+    form.contact-form button[type="submit"] {
+      background-color: #38a169;
+      border: none;
+      color: #f0fff4;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 0;
+      border-radius: 9999px;
+      box-shadow: 0 6px 14px rgb(56 161 105 / 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    form.contact-form button[type="submit"]:hover,
+    form.contact-form button[type="submit"]:focus {
+      background-color: #2f855a;
+      box-shadow: 0 8px 20px rgb(47 133 90 / 0.8);
+      outline: none;
+    }
+    form.contact-form button[type="submit"]:focus-visible {
+      outline: 3px solid #9ae6b4;
+      outline-offset: 3px;
+    }
+
+    .contact-info {
+      flex: 1 1 350px;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      color: #276749;
+      font-weight: 500;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .contact-info i {
+      color: #38a169;
+      font-size: 1.25rem;
+      min-width: 24px;
+      text-align: center;
+    }
+    .contact-info address {
+      font-style: normal;
+      line-height: 1.4;
+    }
+    .map-container {
+      margin-top: 3rem;
+      width: 100%;
+      height: 300px;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ============================
+       Footer Styles
+       ============================ */
+    footer {
+      background-color: #2f855a;
+      color: #e6fffa;
+      padding: 2rem 1rem;
+      margin-top: auto;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      user-select: none;
+      flex: 1 1 200px;
+    }
+    .footer-links,
+    .footer-contact {
+      flex: 1 1 200px;
+    }
+    .footer-links h3,
+    .footer-contact h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #9ae6b4;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+    .footer-links a {
+      color: #e6fffa;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: #c6f6d5;
+      outline: none;
+    }
+    .footer-contact div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    .footer-contact i {
+      font-size: 1.25rem;
+      color: #9ae6b4;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #38a169;
+      color: #f0fff4;
+      border: none;
+      border-radius: 50%;
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 14px rgb(56 161 105 / 0.7);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    #scrollTopBtn:hover,
+    #scrollTopBtn:focus {
+      background-color: #2f855a;
+      box-shadow: 0 8px 20px rgb(47 133 90 / 0.9);
+      outline: none;
+    }
+    #scrollTopBtn:focus-visible {
+      outline: 3px solid #9ae6b4;
+      outline-offset: 3px;
+    }
+
+    /* ============================
+       Responsive Styles
+       ============================ */
+    @media (max-width: 768px) {
+      /* Header nav */
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+
+      /* Hero text */
+      #home h1 {
+        font-size: 2.5rem;
+      }
+      #home p.subtitle {
+        font-size: 1.125rem;
+      }
+
+      /* About section - stack vertically */
+      .founders {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Contact container stack */
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 400px) {
+      #home h1 {
+        font-size: 2rem;
+      }
+      #home p.subtitle {
+        font-size: 1rem;
+      }
+      .product-image-wrapper img {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header + Navigation -->
+  <header>
+    <nav aria-label="Primary Navigation" class="container" role="navigation">
+      <a aria-label="Farhan Zrai Service Home" class="brand" href="#home">
+        Farhan Zrai Service
+      </a>
+      <button aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu" class="menu-toggle" id="menuToggle">
+        <i aria-hidden="true" class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links" id="primary-navigation">
+        <a href="#home" tabindex="0">Home</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#products" tabindex="0">Products</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
+    </nav>
+    <nav aria-label="Mobile Navigation" class="mobile-nav" hidden="" id="mobileNav">
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#about" tabindex="0">About</a>
+      <a href="#products" tabindex="0">Products</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section aria-label="Home - Welcome Section" id="home" role="region">
+    <img alt="A vast green crop field under a clear blue sky with sunlight illuminating the healthy plants" aria-hidden="true" class="bg-image" draggable="false" height="1080" src="https://storage.googleapis.com/a1aa/image/edba54ac-cd70-4d1f-9444-e48e8a9fb754.jpg" width="1920"/>
+    <div class="hero-content">
+      <h1>Welcome to Farhan Zrai Service</h1>
+      <p class="subtitle">Your Trusted Partner in Crop Protection</p>
+      <button aria-label="Explore our products" class="cta-button" id="exploreProductsBtn">
+        Explore Products
+      </button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section aria-label="About - Meet Our Founders" id="about" role="region">
+    <h2>Meet Our Founders</h2>
+    <div class="founders">
+      <article aria-describedby="founder1-desc" aria-labelledby="founder1-name" class="founder-card" tabindex="0">
+        <img alt="Portrait of founder Mr. Farhan, a middle-aged man wearing a green shirt and smiling confidently" draggable="false" height="160" loading="lazy" src="https://storage.googleapis.com/a1aa/image/feacf6c0-964e-4034-cc99-76e83b769cd9.jpg" width="160"/>
+        <h3 id="founder1-name">Mr. Farhan</h3>
+        <p id="founder1-desc">
+          With over 15 years of experience in agricultural solutions, Mr. Farhan leads our mission to provide
+          sustainable crop protection products.
+        </p>
+      </article>
+      <article aria-describedby="founder2-desc" aria-labelledby="founder2-name" class="founder-card" tabindex="0">
+        <img alt="Portrait of founder Mrs. Zrai, a woman in her 40s wearing a white blouse and glasses, smiling warmly" draggable="false" height="160" loading="lazy" src="https://storage.googleapis.com/a1aa/image/b499fcef-813e-48a4-8e02-32b12c855836.jpg" width="160"/>
+        <h3 id="founder2-name">Mrs. Zrai</h3>
+        <p id="founder2-desc">
+          Mrs. Zrai brings expertise in agricultural chemistry and customer relations, ensuring quality and trust in
+          every product.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section aria-label="Products - Our Products" id="products" role="region">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <article aria-describedby="product1-desc" aria-labelledby="product1-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Bottle of pesticide product labeled 'Pesticide Pro' with green and white packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/3d656b27-35cd-4fa5-1da1-cb7bec5e8a3b.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product1-name">Pesticide Pro</h3>
+          <p id="product1-desc">
+            Effective pesticide for protecting crops from a wide range of harmful insects and pests.
+          </p>
+          <button aria-label="Buy Pesticide Pro now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+      <article aria-describedby="product2-desc" aria-labelledby="product2-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Container of herbicide product labeled 'HerbiClear' with yellow and green packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/00e83e87-7703-4d92-b118-58032beb41dc.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product2-name">HerbiClear</h3>
+          <p id="product2-desc">
+            Powerful herbicide designed to eliminate unwanted weeds without harming your crops.
+          </p>
+          <button aria-label="Buy HerbiClear now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+      <article aria-describedby="product3-desc" aria-labelledby="product3-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Spray bottle of insecticide product labeled 'InsectoGuard' with blue and white packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/1a5042ab-9b2f-4afd-5205-b772fba8443a.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product3-name">InsectoGuard</h3>
+          <p id="product3-desc">
+            Reliable insecticide that protects your crops from damaging insects with long-lasting effects.
+          </p>
+          <button aria-label="Buy InsectoGuard now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+      <article aria-describedby="product4-desc" aria-labelledby="product4-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Box of pesticide product labeled 'CropShield' with red and green packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/81b7e1c6-596c-485d-a2cf-23f6c6a91571.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product4-name">CropShield</h3>
+          <p id="product4-desc">
+            Advanced pesticide formula that ensures maximum protection against crop diseases and pests.
+          </p>
+          <button aria-label="Buy CropShield now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+      <article aria-describedby="product5-desc" aria-labelledby="product5-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Bottle of herbicide product labeled 'WeedAway' with orange and green packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a46b4c2b-c417-4f5a-a893-cf72c455183b.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product5-name">WeedAway</h3>
+          <p id="product5-desc">
+            Selective herbicide that targets tough weeds while preserving the health of your crops.
+          </p>
+          <button aria-label="Buy WeedAway now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+      <article aria-describedby="product6-desc" aria-labelledby="product6-name" class="product-card" tabindex="0">
+        <div class="product-image-wrapper">
+          <img alt="Canister of insecticide product labeled 'BugStop' with purple and green packaging" draggable="false" height="300" loading="lazy" src="https://storage.googleapis.com/a1aa/image/a8ec2ef0-f55c-4a1f-1878-95636c57f678.jpg" width="400"/>
+        </div>
+        <div class="product-content">
+          <h3 id="product6-name">BugStop</h3>
+          <p id="product6-desc">
+            Fast-acting insecticide that controls a broad spectrum of insects to keep your crops safe.
+          </p>
+          <button aria-label="Buy BugStop now" class="buy-button">Buy Now</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section aria-label="Contact - Get in Touch" id="contact" role="region">
+    <h2>Get in Touch</h2>
+    <div class="contact-container">
+      <form class="contact-form" id="contactForm" novalidate="">
+        <label for="name">Name</label>
+        <input aria-required="true" id="name" name="name" placeholder="Your full name" required="" type="text"/>
+        <label for="email">Email</label>
+        <input aria-required="true" id="email" name="email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" placeholder="you@example.com" required="" type="email"/>
+        <label for="message">Message</label>
+        <textarea aria-required="true" id="message" name="message" placeholder="Write your message here..." required=""></textarea>
+        <button aria-label="Submit contact form" type="submit">Send Message</button>
+      </form>
+      <aside aria-label="Contact Information" class="contact-info">
+        <div>
+          <i aria-hidden="true" class="fas fa-phone"></i>
+          <a aria-label="Phone number +1 234 567 890" href="tel:+1234567890">+1 234 567 890</a>
+        </div>
+        <div>
+          <i aria-hidden="true" class="fab fa-whatsapp"></i>
+          <a aria-label="WhatsApp chat +1 234 567 890" href="https://wa.me/1234567890" rel="noopener" target="_blank">+1 234 567 890</a>
+        </div>
+        <div>
+          <i aria-hidden="true" class="fas fa-map-marker-alt"></i>
+          <address>123 Green Fields Road, Agriculture City, Country</address>
+        </div>
+      </aside>
+    </div>
+    <div aria-label="Google Maps location" class="map-container">
+      <iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=123%20Green%20Fields%20Road%2C%20Agriculture%20City&t=&z=13&ie=UTF8&iwloc=&output=embed" title="Google Maps location of Farhan Zrai Service"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-container container">
+      <div aria-label="Brand name" class="footer-brand">
+        Farhan Zrai Service
+      </div>
+      <nav aria-label="Footer Quick Links" class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home" tabindex="0">Home</a></li>
+          <li><a href="#about" tabindex="0">About</a></li>
+          <li><a href="#products" tabindex="0">Products</a></li>
+          <li><a href="#contact" tabindex="0">Contact</a></li>
+        </ul>
+      </nav>
+      <section aria-label="Footer Contact Information" class="footer-contact">
+        <h3>Contact Info</h3>
+        <div>
+          <i aria-hidden="true" class="fas fa-phone"></i>
+          <a aria-label="Phone number +1 234 567 890" href="tel:+1234567890">+1 234 567 890</a>
+        </div>
+        <div>
+          <i aria-hidden="true" class="fab fa-whatsapp"></i>
+          <a aria-label="WhatsApp chat +1 234 567 890" href="https://wa.me/1234567890" rel="noopener" target="_blank">+1 234 567 890</a>
+        </div>
+        <div>
+          <i aria-hidden="true" class="fas fa-map-marker-alt"></i>
+          <address>123 Green Fields Road, Agriculture City, Country</address>
+        </div>
+      </section>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button aria-label="Scroll to top" id="scrollTopBtn">
+    <i aria-hidden="true" class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // ============================
+    // Navigation Mobile Menu Toggle
+    // ============================
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      if (mobileNav.hasAttribute('hidden')) {
+        mobileNav.removeAttribute('hidden');
+      } else {
+        mobileNav.setAttribute('hidden', '');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.setAttribute('hidden', '');
+        menuToggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // ============================
+    // Hero CTA Button Scroll to Products
+    // ============================
+    const exploreBtn = document.getElementById('exploreProductsBtn');
+    exploreBtn.addEventListener('click', () => {
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // ============================
+    // Scroll to Top Button Logic
+    // ============================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.style.display = 'flex';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ============================
+    // About Section Animation on Scroll
+    // ============================
+    const founderCards = document.querySelectorAll('.founder-card');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2,
+    };
+
+    const observerCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    founderCards.forEach(card => observer.observe(card));
+
+    // ============================
+    // Contact Form Validation
+    // ============================
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+
+      // Simple validation
+      if (!name) {
+        alert('Please enter your name.');
+        contactForm.name.focus();
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address.');
+        contactForm.email.focus();
+        return;
+      }
+      if (!message) {
+        alert('Please enter your message.');
+        contactForm.message.focus();
+        return;
+      }
+
+      // For demo: just show a success message
+      alert('Thank you for contacting Farhan Zrai Service! We will get back to you soon.');
+
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
+
